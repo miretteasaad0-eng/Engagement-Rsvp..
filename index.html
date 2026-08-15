@@ -19,11 +19,7 @@
             --success-green: #4a7c59;
         }
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+        * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
             background-color: var(--bg-color);
@@ -57,9 +53,7 @@
             margin-bottom: 30px;
         }
 
-        .content-padding {
-            padding: 0 25px;
-        }
+        .content-padding { padding: 0 25px; }
 
         .header-subtitle {
             font-size: 0.8rem;
@@ -107,11 +101,7 @@
             color: #444;
         }
 
-        .detail-item strong {
-            display: block;
-            font-weight: 500;
-            color: #222;
-        }
+        .detail-item strong { display: block; font-weight: 500; color: #222; }
 
         .location-card-link {
             display: block;
@@ -132,14 +122,9 @@
             transform: translateY(-2px);
         }
 
-        .location-card-link strong {
-            color: var(--accent-gold);
-        }
+        .location-card-link strong { color: var(--accent-gold); }
 
-        .rsvp-section {
-            margin-top: 30px;
-            text-align: center;
-        }
+        .rsvp-section { margin-top: 30px; text-align: center; }
 
         .rsvp-question {
             font-family: 'Cinzel', serif;
@@ -157,9 +142,7 @@
             letter-spacing: 0.5px;
         }
 
-        .input-group {
-            margin-bottom: 20px;
-        }
+        .input-group { margin-bottom: 20px; }
 
         .name-input, .select-input {
             width: 100%;
@@ -186,14 +169,8 @@
             margin-bottom: 20px;
         }
 
-        .choice-option {
-            flex: 1;
-            position: relative;
-        }
-
-        .choice-option input[type="radio"] {
-            display: none;
-        }
+        .choice-option { flex: 1; position: relative; }
+        .choice-option input[type="radio"] { display: none; }
 
         .choice-label {
             display: block;
@@ -217,7 +194,6 @@
             box-shadow: 0 2px 8px rgba(197, 160, 89, 0.15);
         }
 
-        /* Family Section Styling */
         .family-box {
             background: #faf8f5;
             border: 1px dashed var(--accent-gold);
@@ -226,24 +202,17 @@
             margin-bottom: 20px;
         }
 
-        /* Signature Above Button */
-        .signature-above-btn {
-            margin: 20px 0 15px 0;
-            padding-top: 10px;
-        }
+        .signature-above-btn { margin: 22px 0 16px 0; }
 
         .signature-text {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.8rem;
-            color: #777777;
-            letter-spacing: 1px;
+            font-size: 0.92rem;
+            color: #666666;
+            letter-spacing: 1.2px;
             font-weight: 500;
         }
 
-        .signature-text span {
-            font-weight: 600;
-            color: var(--accent-gold);
-        }
+        .signature-text span { font-weight: 700; color: var(--accent-gold); }
 
         .send-btn {
             display: block;
@@ -261,9 +230,7 @@
             transition: all 0.3s ease;
         }
 
-        .send-btn:hover {
-            background-color: var(--accent-gold-hover);
-        }
+        .send-btn:hover { background-color: var(--accent-gold-hover); }
 
         .success-box {
             display: none;
@@ -280,7 +247,6 @@
 <body>
 
     <div class="container">
-        <!-- الصورة المباشرة من ImgBB -->
         <img src="https://i.ibb.co/DHJZpbMm/8266-DEA5-8-B34-4582-9523-8-B5-D2-CC59-AD2-JPG.jpg" alt="Mariam & Kirollos" class="top-image" loading="eager" referrerpolicy="no-referrer">
 
         <div class="content-padding">
@@ -327,7 +293,6 @@
                         </div>
                     </div>
 
-                    <!-- Family Members Section -->
                     <div class="family-box">
                         <p class="sub-question">Will you be bringing any family members with you?</p>
                         
@@ -342,7 +307,7 @@
                             </div>
                         </div>
 
-                        <p class="sub-question" style="margin-top: 10px;">Number of family members accompanying you:</p>
+                        <p class="sub-question" style="margin-top: 10px;">Number of family members:</p>
                         <select id="familyCount" class="select-input">
                             <option value="0">0 (Solo)</option>
                             <option value="1">+1 Family Member</option>
@@ -353,7 +318,6 @@
                         </select>
                     </div>
 
-                    <!-- التوقيع بعد التعديل -->
                     <div class="signature-above-btn">
                         <p class="signature-text">
                             Designed by <span>Mirette Assad</span>
@@ -371,7 +335,8 @@
     </div>
 
     <script>
-        const webAppUrl = 'https://script.google.com/macros/s/AKfycbwN53K3k9EWIDcAOqCUZYPB6auzH7G7irG_PRpA6GTZTYDYejr5ppXArE28nIlSy3gYWw/exec'; 
+        // رابط الـ Google Sheets الذي قمتِ بإنشائه
+        const webAppUrl = 'https://script.google.com/macros/s/AKfycbyp47qURpQV7AOAuOUIuuI6f7AuL6FmzulCsJOWC5uXDtuWvD3hSFULE6P0MuKtfXECzw/exec'; 
 
         const form = document.getElementById('rsvpForm');
         const submitBtn = document.getElementById('submitBtn');
@@ -389,10 +354,10 @@
             const familyCount = document.getElementById('familyCount').value;
 
             const postData = new URLSearchParams();
-            postData.append('name', name);
-            postData.append('attendance', attendance);
-            postData.append('hasFamily', hasFamily);
-            postData.append('familyCount', familyCount);
+            postData.append('Name', name);
+            postData.append('Attendance', attendance);
+            postData.append('HasFamily', hasFamily);
+            postData.append('FamilyCount', familyCount);
 
             fetch(webAppUrl, {
                 method: 'POST',
