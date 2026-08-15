@@ -335,8 +335,7 @@
     </div>
 
     <script>
-        // رابط الـ Google Sheets الجديد والمحدث
-        const webAppUrl = 'https://script.google.com/macros/s/AKfycbxWR-mKkriNDxIHyjV5LRDb3eGkUrU1cxJChANIQvfw4CQw4--pwf4QiV3hk1ZE4iXUUQ/exec'; 
+        const webAppUrl = 'https://script.google.com/macros/s/AKfycbz0b5vnWNFCRGpbohNm7imdtybk7wQVirYtGLIuBJvYSK1kgbUJ5NqRMm4JP15EILUr/exec'; 
 
         const form = document.getElementById('rsvpForm');
         const submitBtn = document.getElementById('submitBtn');
@@ -353,21 +352,22 @@
             const hasFamily = document.querySelector('input[name="hasFamily"]:checked').value;
             const familyCount = document.getElementById('familyCount').value;
 
-            const postData = new URLSearchParams();
-            postData.append('Name', name);
-            postData.append('Attendance', attendance);
-            postData.append('HasFamily', hasFamily);
-            postData.append('FamilyCount', familyCount);
+            const params = new URLSearchParams({
+                Name: name,
+                Attendance: attendance,
+                HasFamily: hasFamily,
+                FamilyCount: familyCount
+            });
 
-            fetch(webAppUrl, {
-                method: 'POST',
-                body: postData
+            fetch(`${webAppUrl}?${params.toString()}`, {
+                method: 'GET',
+                mode: 'no-cors'
             })
-            .then(response => {
+            .then(() => {
                 form.style.display = 'none';
                 successBox.style.display = 'block';
             })
-            .catch(error => {
+            .catch(() => {
                 form.style.display = 'none';
                 successBox.style.display = 'block';
             });
