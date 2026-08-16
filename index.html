@@ -231,17 +231,6 @@
         }
 
         .send-btn:hover { background-color: var(--accent-gold-hover); }
-
-        .success-box {
-            display: none;
-            background-color: #f4f8f5;
-            border: 1px solid var(--success-green);
-            color: var(--success-green);
-            padding: 20px;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-        }
     </style>
 </head>
 <body>
@@ -275,20 +264,26 @@
             </div>
 
             <div class="rsvp-section">
-                <form id="rsvpForm">
+                <!-- تم وضع إيميلك مباشرة هنا -->
+                <form action="https://formsubmit.co/Miretteassad0@gmail.com" method="POST">
+                    
+                    <!-- إعدادات إضافية -->
+                    <input type="hidden" name="_subject" value="New RSVP - Mariam & Kirollos Engagement">
+                    <input type="hidden" name="_captcha" value="false">
+
                     <h3 class="rsvp-question">Will you join us for the celebration?</h3>
 
                     <div class="input-group">
-                        <input type="text" id="nameInput" class="name-input" placeholder="Your Full Name" required>
+                        <input type="text" name="Name" class="name-input" placeholder="Your Full Name" required>
                     </div>
 
                     <div class="choice-group">
                         <div class="choice-option">
-                            <input type="radio" id="yes" name="attendance" value="Joyfully Yes" required>
+                            <input type="radio" id="yes" name="Attendance" value="Joyfully Yes" required>
                             <label for="yes" class="choice-label">Joyfully Yes</label>
                         </div>
                         <div class="choice-option">
-                            <input type="radio" id="no" name="attendance" value="Sadly No">
+                            <input type="radio" id="no" name="Attendance" value="Sadly No">
                             <label for="no" class="choice-label">Sadly No</label>
                         </div>
                     </div>
@@ -298,17 +293,17 @@
                         
                         <div class="choice-group">
                             <div class="choice-option">
-                                <input type="radio" id="hasFamilyYes" name="hasFamily" value="Yes">
+                                <input type="radio" id="hasFamilyYes" name="HasFamily" value="Yes">
                                 <label for="hasFamilyYes" class="choice-label">Yes</label>
                             </div>
                             <div class="choice-option">
-                                <input type="radio" id="hasFamilyNo" name="hasFamily" value="No" checked>
+                                <input type="radio" id="hasFamilyNo" name="HasFamily" value="No" checked>
                                 <label for="hasFamilyNo" class="choice-label">No (Attending Solo)</label>
                             </div>
                         </div>
 
                         <p class="sub-question" style="margin-top: 10px;">Number of family members:</p>
-                        <select id="familyCount" class="select-input">
+                        <select name="FamilyCount" class="select-input">
                             <option value="0">0 (Solo)</option>
                             <option value="1">+1 Family Member</option>
                             <option value="2">+2 Family Members</option>
@@ -324,54 +319,11 @@
                         </p>
                     </div>
 
-                    <button type="submit" id="submitBtn" class="send-btn">Send My Answer</button>
+                    <button type="submit" class="send-btn">Send My Answer</button>
                 </form>
-
-                <div id="successBox" class="success-box">
-                    ✨ تم تسجيل ردك بنجاح ✨
-                </div>
             </div>
         </div>
     </div>
 
-    <script>
-        const webAppUrl = 'https://script.google.com/macros/s/AKfycbz0b5vnWNFCRGpbohNm7imdtybk7wQVirYtGLIuBJvYSK1kgbUJ5NqRMm4JP15EILUr/exec'; 
-
-        const form = document.getElementById('rsvpForm');
-        const submitBtn = document.getElementById('submitBtn');
-        const successBox = document.getElementById('successBox');
-
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            submitBtn.innerText = 'Sending...';
-            submitBtn.disabled = true;
-
-            const name = document.getElementById('nameInput').value;
-            const attendance = document.querySelector('input[name="attendance"]:checked').value;
-            const hasFamily = document.querySelector('input[name="hasFamily"]:checked').value;
-            const familyCount = document.getElementById('familyCount').value;
-
-            const params = new URLSearchParams({
-                Name: name,
-                Attendance: attendance,
-                HasFamily: hasFamily,
-                FamilyCount: familyCount
-            });
-
-            fetch(`${webAppUrl}?${params.toString()}`, {
-                method: 'GET',
-                mode: 'no-cors'
-            })
-            .then(() => {
-                form.style.display = 'none';
-                successBox.style.display = 'block';
-            })
-            .catch(() => {
-                form.style.display = 'none';
-                successBox.style.display = 'block';
-            });
-        });
-    </script>
 </body>
 </html>
